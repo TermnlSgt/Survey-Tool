@@ -1,12 +1,11 @@
-import os 
-import tkinter as tk
+import os
 from tkinter.filedialog import askdirectory
 
-def move_file():
 
+def move_file():
     # Allows user to select raw and processed directories
-    raw_folder = askdirectory(title = 'Select Raw Line Folder')
-    processed_folder = askdirectory(title = 'Select Processed Folder')
+    raw_folder = askdirectory(title='Select Raw Line Folder')
+    processed_folder = askdirectory(title='Select Processed Folder')
 
     # Places files from user defined directories in list
     raw_dir = os.listdir(raw_folder)
@@ -19,12 +18,10 @@ def move_file():
     new_raw_file_path = f'{raw_folder}/{str(*new_file)}'
     new_processed_file_path = f'{processed_folder}/{str(*new_file)}'
 
-    # Imports  variables and calls list_dir() function
-    new_raw_file_path, new_processed_file_path = list_dir()
-
     # Moves File
     with open(new_raw_file_path, 'r') as raw, open(new_processed_file_path, 'w') as processed:
         for line in raw:
             processed.write(line)
+
 
 move_file()
